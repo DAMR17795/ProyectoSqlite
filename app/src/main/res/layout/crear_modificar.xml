@@ -23,7 +23,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Titulo"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="287dp"
+        android:layout_width="290dp"
         android:layout_height="84dp"
         android:layout_marginStart="70dp"
         android:layout_marginTop="76dp"
@@ -35,7 +35,7 @@
         app:counterMaxLength="40"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:startIconDrawable="@drawable/fuente">
@@ -55,7 +55,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Visto"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="288dp"
+        android:layout_width="290dp"
         android:layout_height="61dp"
         android:layout_marginStart="70dp"
         android:layout_marginTop="292dp"
@@ -65,7 +65,7 @@
         app:boxBackgroundMode="outline"
         app:boxStrokeColor="#EAEAEE"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:startIconDrawable="@drawable/estado">
@@ -79,7 +79,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Descripcion"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="286dp"
+        android:layout_width="290dp"
         android:layout_height="132dp"
         android:layout_marginStart="70dp"
         android:layout_marginTop="160dp"
@@ -91,7 +91,7 @@
         app:counterMaxLength="735"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:startIconDrawable="@drawable/pegar">
@@ -111,7 +111,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Categoria"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="288dp"
+        android:layout_width="290dp"
         android:layout_height="61dp"
         android:layout_marginStart="70dp"
         android:layout_marginTop="364dp"
@@ -121,7 +121,7 @@
         app:boxBackgroundMode="outline"
         app:boxStrokeColor="#EAEAEE"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:startIconDrawable="@drawable/mando">
