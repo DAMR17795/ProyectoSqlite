@@ -64,15 +64,15 @@ class JuegosViewHolder(vista: View) : RecyclerView.ViewHolder(vista) {
         miBinding.ivMain.setImageBitmap(bitmap)
         miBinding.tvVisto.text = juego.jugado
 
-        if (juego.jugado.equals("Jugado")) {
+        if (juego.jugado.equals(itemView.context.resources.getString(R.string.jugado))) {
 
             miBinding.tvVisto.setTextColor(ContextCompat.getColor(itemView.context, R.color.verde))
         }
-        if (juego.jugado.equals("No Jugado")) {
+        if (juego.jugado.equals(itemView.context.resources.getString(R.string.no_jugado))) {
 
             miBinding.tvVisto.setTextColor(ContextCompat.getColor(itemView.context, R.color.rojo))
         }
-        if (juego.jugado.equals("Jugándolo")) {
+        if (juego.jugado.equals(itemView.context.resources.getString(R.string.jugandolo))) {
 
             miBinding.tvVisto.setTextColor(
                 ContextCompat.getColor(

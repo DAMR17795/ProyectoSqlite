@@ -34,7 +34,7 @@
             android:layout_weight="0.60"
             android:background="@drawable/searchview_bg"
             app:iconifiedByDefault="false"
-            app:queryHint="Busca aquí ..." />
+            app:queryHint="@string/busca_video" />
     </LinearLayout>
 
     <LinearLayout

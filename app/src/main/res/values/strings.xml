@@ -6,8 +6,8 @@
     <string name="descripcion">Descripcion*</string>
     <string name="consola">Consola*</string>
     <string name="estado">Estado*</string>
-    <string name="guardar">Guardar</string>
-    <string name="volver">Volver</string>
+    <string name="guardar">Guardar  💾</string>
+    <string name="volver">Volver ⬅️</string>
     <string name="editar">Editar</string>
     <string name="borrar_contenido">Borrar contenido</string>
     <string name="borrado">¿Estás seguro de borrar todos los datos existentes?</string>
@@ -26,4 +26,9 @@
     <string name="descripcion_vacia">La descripción no puede estar vacía</string>
     <string name="campo_vacio">Este campo no puede estar vacío</string>
     <string name="registro">No se pudo guardar el registro</string>
+    <string name="estado2">Estado: </string>
+    <string name="consola2">Consola: </string>
+    <string name="no_hay">No hay videojuegos con esa configuracion</string>
+    <string name="todo">Todo</string>
+    <string name="busca_video">Busca videojuego...</string>
 </resources>

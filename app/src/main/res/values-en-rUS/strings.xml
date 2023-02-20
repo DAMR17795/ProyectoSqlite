@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ProyectoSqlite</string>
+    <string name="about">App Developed By:</string>
+    <string name="acerca">About</string>
+    <string name="titulo">Title*</string>
+    <string name="descripcion">Description*</string>
+    <string name="consola">Console*</string>
+    <string name="estado">State*</string>
+    <string name="guardar">Save  💾</string>
+    <string name="volver">Back ⬅️</string>
+    <string name="editar">Edit</string>
+    <string name="borrar_contenido">Delete content</string>
+    <string name="borrado">Are you sure of deleting all the existent data?</string>
+    <string name="confirmar">Confirm</string>
+    <string name="cancelar">Cancel</string>
+    <string name="elegir">Choose an option</string>
+    <string name="foto">Take a photo</string>
+    <string name="galeria">Choose from the gallery</string>
+    <string name="modificar">UPDATE GAME:</string>
+    <string name="crear">CREATE GAME:</string>
+    <string name="jugado">Played</string>
+    <string name="no_jugado">Not Played</string>
+    <string name="jugandolo">Playing it</string>
+    <string name="no_existe">This console doesn\'t exist</string>
+    <string name="titulo_vacio">The title field can\'t be empty</string>
+    <string name="descripcion_vacia">The description field can\'t be empty</string>
+    <string name="campo_vacio">The field can\'t be empty</string>
+    <string name="registro">The register couldn\'t be loaded</string>
+    <string name="estado2">State:</string>
+    <string name="consola2">Console:</string>
+    <string name="no_hay">There are no videogames with that configuration</string>
+    <string name="todo">All</string>
+    <string name="busca_video">Search videogame...</string>
+</resources>

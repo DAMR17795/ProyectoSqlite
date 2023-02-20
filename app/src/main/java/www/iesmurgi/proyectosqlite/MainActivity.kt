@@ -77,18 +77,18 @@ class MainActivity : AppCompatActivity() {
     fun borrar(){
 
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Borrar contenido")
-        builder.setMessage("¿Estás seguro de borrar todos los datos?")
+        builder.setTitle(resources.getString(R.string.borrar_contenido))
+        builder.setMessage(resources.getString(R.string.borrado))
         builder.setIcon(R.drawable.ic_delete)
 
-        builder.setPositiveButton("Confirmar") { dialog, which ->
+        builder.setPositiveButton(resources.getString(R.string.confirmar)) { dialog, which ->
             conexion.borrarTodo()
             lista.clear()
             miAdapter.notifyDataSetChanged()
             binding.tvNo.visibility = View.VISIBLE
         }
 
-        builder.setNegativeButton("Cancelar") { dialog, which ->
+        builder.setNegativeButton(resources.getString(R.string.cancelar)) { dialog, which ->
             dialog.dismiss()
         }
 
@@ -100,6 +100,7 @@ class MainActivity : AppCompatActivity() {
 
         val buttonNegative = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
         buttonNegative.setTextColor(ContextCompat.getColor(this, R.color.rojo))
+        //hola
 
 
     }
@@ -111,7 +112,8 @@ class MainActivity : AppCompatActivity() {
 
     fun spinners() {
 
-        var listaVisto = listOf<String>("TODO", "JUGADO", "NO JUGADO", "JUGÁNDOLO")
+        var listaVisto = listOf<String>(resources.getString(R.string.todo).uppercase(), resources.getString(R.string.jugado).uppercase()
+            , resources.getString(R.string.no_jugado).uppercase(), resources.getString(R.string.jugandolo).uppercase())
         var listaCategoria = listOf<String>("TODO", "PS5", "SWITCH", "XBOX/X")
         spinner1 = binding.spVisto
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listaVisto)
@@ -144,7 +146,7 @@ class MainActivity : AppCompatActivity() {
 
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("Error")
-                builder.setMessage("No hay videojuegos con esa configuracion.")
+                builder.setMessage(resources.getString(R.string.no_hay))
                 builder.setPositiveButton("OK") { dialog, which ->
                     //Acción a realizar cuando se presiona el botón OK
                 }
@@ -182,7 +184,7 @@ class MainActivity : AppCompatActivity() {
 
         for (anime in lista) {
 
-            if (textoSpinner1.equals("TODO") && textoSpinner2.equals("TODO")) {
+            if (textoSpinner1.equals(resources.getString(R.string.todo).uppercase()) && textoSpinner2.equals(resources.getString(R.string.todo).uppercase())) {
                 if (anime.titulo.toLowerCase().contains(text.toString().toLowerCase())) {
                     listaCopia.add(anime)
                 }
@@ -195,7 +197,7 @@ class MainActivity : AppCompatActivity() {
                     listaCopia.add(anime)
                 }
 
-            } else if (textoSpinner1.equals("TODO") && !textoSpinner2.equals("TODO")) {
+            } else if (textoSpinner1.equals(resources.getString(R.string.todo).uppercase()) && !textoSpinner2.equals(resources.getString(R.string.todo).uppercase())) {
 
                 if (anime.titulo.toLowerCase()
                         .contains(text.toString().toLowerCase()) && (anime.consola.toLowerCase()
@@ -204,7 +206,7 @@ class MainActivity : AppCompatActivity() {
                     listaCopia.add(anime)
                 }
 
-            } else if (!textoSpinner1.equals("TODO") && !textoSpinner2.equals("TODO")) {
+            } else if (!textoSpinner1.equals(resources.getString(R.string.todo).uppercase()) && !textoSpinner2.equals(resources.getString(R.string.todo).uppercase())) {
 
                 if (anime.titulo.toLowerCase()
                         .contains(text.toString().toLowerCase()) && anime.consola.toLowerCase()
