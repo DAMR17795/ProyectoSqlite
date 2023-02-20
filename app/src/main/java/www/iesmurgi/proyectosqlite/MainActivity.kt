@@ -187,7 +187,8 @@ class MainActivity : AppCompatActivity() {
                 if (anime.titulo.toLowerCase().contains(text.toString().toLowerCase())) {
                     listaCopia.add(anime)
                 }
-            } else if (!textoSpinner1.equals("TODO") && textoSpinner2.equals("TODO")) {
+            } else if (!textoSpinner1.equals(resources.getString(R.string.todo).uppercase())
+                && textoSpinner2.equals(resources.getString(R.string.todo).uppercase())) {
 
                 if (anime.titulo.toLowerCase()
                         .contains(text.toString().toLowerCase()) && (anime.jugado.toLowerCase()
