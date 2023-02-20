@@ -100,7 +100,6 @@ class MainActivity : AppCompatActivity() {
 
         val buttonNegative = dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
         buttonNegative.setTextColor(ContextCompat.getColor(this, R.color.rojo))
-        //hola
 
 
     }
