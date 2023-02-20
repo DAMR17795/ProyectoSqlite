@@ -8,18 +8,6 @@
     tools:context=".actividades.Crear_Modificar">
 
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.022"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.866" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/Titulo"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -137,10 +125,10 @@
         style="@android:style/Widget.Holo.Light.RatingBar"
         android:layout_width="238dp"
         android:layout_height="48dp"
-        android:layout_marginTop="528dp"
+        android:layout_marginTop="524dp"
         android:numStars="5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.583"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -170,12 +158,12 @@
         android:id="@+id/imageView"
         android:layout_width="154dp"
         android:layout_height="127dp"
-        android:layout_marginTop="592dp"
+        android:layout_marginTop="588dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/nophoto" />
+        tools:src="@drawable/camara" />
 
     <TextView
         android:id="@+id/textView"
@@ -198,7 +186,6 @@
         android:layout_height="69dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.557"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.669"

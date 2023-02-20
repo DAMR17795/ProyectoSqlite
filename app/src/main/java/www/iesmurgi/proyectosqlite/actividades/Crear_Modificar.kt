@@ -53,16 +53,11 @@ class Crear_Modificar:AppCompatActivity() {
         binding = CrearModificarBinding.inflate(layoutInflater)
         setContentView(binding.root)
         conexion = BaseDatosJuegos(this)
-        var button= binding.button2
-        button.setOnClickListener{
-            abrirFoto()
-        }
+        binding.imageView.setImageResource(R.drawable.camara)
+        binding.imageView.setTag(R.drawable.camara)
 
-
-        binding.imageView.setImageResource(R.drawable.nophoto)
         datosNoVacios()
         autocomplete()
-        // cargarLista()
         cogerDatos()
         setListeners()
     }
@@ -90,8 +85,7 @@ class Crear_Modificar:AppCompatActivity() {
 
     private fun setListeners() {
         binding.imageView.setOnClickListener {
-
-            openGallery()
+            abrirFoto()
         }
 
         binding.btnVolver.setOnClickListener {
@@ -104,7 +98,6 @@ class Crear_Modificar:AppCompatActivity() {
 
 
     fun datosNoVacios() {
-
         binding.etTitulo.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val input = s.toString()
@@ -232,7 +225,6 @@ class Crear_Modificar:AppCompatActivity() {
             val anime = datos.getSerializable("ANIMES") as Juegos
             id = anime.id
             binding.etTitulo.setText(anime.titulo)
-            //binding.etCategoria.setText(anime.categoria)
             binding.etDescripcion.setText(anime.descripcion)
 
             binding.autocompleteCategoria.setText(anime.consola)
@@ -243,6 +235,7 @@ class Crear_Modificar:AppCompatActivity() {
             binding.etStar.rating = anime.estrellas
 
             val byteArray = anime.imagen // tu array de bytes
+
             val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
             binding.imageView.setImageBitmap(bitmap)
 
@@ -255,6 +248,12 @@ class Crear_Modificar:AppCompatActivity() {
         descripcion = binding.etDescripcion.text.toString().trim()
         categoria = binding.autocompleteCategoria.text.toString().trim()
         estrellas = binding.etStar.rating
+
+        if (binding.imageView.getTag() == R.drawable.camara) {
+            binding.imageView.setImageResource(R.drawable.nophoto)
+            binding.imageView.setTag(R.drawable.nophoto)
+        }
+
 
         visto = binding.autocompleteVisto.text.toString().trim()
 
@@ -343,19 +342,11 @@ class Crear_Modificar:AppCompatActivity() {
 
     }
 
-
     companion object {
 
         const val REQUEST_CODE_GALLERY = 1
-        const val CAMERA_REQUEST_CODE = 31
         const val PICK_IMAGE_REQUEST_GALERIA=20
         const val PICK_IMAGE_REQUEST_CAMERA=21
-    }
-
-    private fun openGallery() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        startActivityForResult(intent, REQUEST_CODE_GALLERY)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -367,6 +358,7 @@ class Crear_Modificar:AppCompatActivity() {
         } else if ( requestCode == PICK_IMAGE_REQUEST_CAMERA && resultCode == Activity.RESULT_OK) {
             val imagen = data?.extras?.get("data") as Bitmap
             binding.imageView.setImageBitmap(imagen)
+            binding.imageView.setTag(imagen)
         }
     }
 }
