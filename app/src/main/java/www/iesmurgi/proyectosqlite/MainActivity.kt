@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         searchView.clearFocus()
 
         spinner1 = binding.spVisto
-        spinner2 = binding.spCategoria
+        spinner2 = binding.spConsola
         spinners()
 
         listeners()
@@ -120,7 +120,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        spinner2 = binding.spCategoria
+        spinner2 = binding.spConsola
         val adapter2 =
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listaCategoria)
         spinner2.adapter = adapter2
@@ -181,39 +181,39 @@ class MainActivity : AppCompatActivity() {
 
         var listaCopia = mutableListOf<Juegos>()
 
-        for (anime in lista) {
+        for (juegos in lista) {
 
             if (textoSpinner1.equals(resources.getString(R.string.todo).uppercase()) && textoSpinner2.equals(resources.getString(R.string.todo).uppercase())) {
-                if (anime.titulo.toLowerCase().contains(text.toString().toLowerCase())) {
-                    listaCopia.add(anime)
+                if (juegos.titulo.toLowerCase().contains(text.toString().toLowerCase())) {
+                    listaCopia.add(juegos)
                 }
             } else if (!textoSpinner1.equals(resources.getString(R.string.todo).uppercase())
                 && textoSpinner2.equals(resources.getString(R.string.todo).uppercase())) {
 
-                if (anime.titulo.toLowerCase()
-                        .contains(text.toString().toLowerCase()) && (anime.jugado.toLowerCase()
+                if (juegos.titulo.toLowerCase()
+                        .contains(text.toString().toLowerCase()) && (juegos.jugado.toLowerCase()
                         .equals(textoSpinner1.toLowerCase()))
                 ) {
-                    listaCopia.add(anime)
+                    listaCopia.add(juegos)
                 }
 
             } else if (textoSpinner1.equals(resources.getString(R.string.todo).uppercase()) && !textoSpinner2.equals(resources.getString(R.string.todo).uppercase())) {
 
-                if (anime.titulo.toLowerCase()
-                        .contains(text.toString().toLowerCase()) && (anime.consola.toLowerCase()
+                if (juegos.titulo.toLowerCase()
+                        .contains(text.toString().toLowerCase()) && (juegos.consola.toLowerCase()
                         .equals(textoSpinner2.toLowerCase()))
                 ) {
-                    listaCopia.add(anime)
+                    listaCopia.add(juegos)
                 }
 
             } else if (!textoSpinner1.equals(resources.getString(R.string.todo).uppercase()) && !textoSpinner2.equals(resources.getString(R.string.todo).uppercase())) {
 
-                if (anime.titulo.toLowerCase()
-                        .contains(text.toString().toLowerCase()) && anime.consola.toLowerCase()
-                        .equals(textoSpinner2.toLowerCase()) && anime.jugado.toLowerCase()
+                if (juegos.titulo.toLowerCase()
+                        .contains(text.toString().toLowerCase()) && juegos.consola.toLowerCase()
+                        .equals(textoSpinner2.toLowerCase()) && juegos.jugado.toLowerCase()
                         .equals(textoSpinner1.toLowerCase())
                 ) {
-                    listaCopia.add(anime)
+                    listaCopia.add(juegos)
                 }
 
             }
@@ -248,7 +248,7 @@ class MainActivity : AppCompatActivity() {
         }
         val layoutManager = LinearLayoutManager(this)
         binding.rvMain.layoutManager = layoutManager
-        miAdapter = JuegosAdapter(lista, { onItemDelete(it) }) { anime -> onItemUpdate(anime) }
+        miAdapter = JuegosAdapter(lista, { onItemDelete(it) }) { juego -> onItemUpdate(juego) }
         binding.rvMain.adapter = miAdapter
 
     }
@@ -266,9 +266,9 @@ class MainActivity : AppCompatActivity() {
         miAdapter.notifyItemRemoved(position)
     }
 
-    private fun onItemUpdate(anime: Juegos) {
+    private fun onItemUpdate(juego: Juegos) {
         val i = Intent(this, Crear_Modificar::class.java).apply {
-            putExtra("ANIMES", anime)
+            putExtra("JUEGOS", juego)
         }
         startActivity(i)
     }

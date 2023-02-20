@@ -31,4 +31,5 @@
     <string name="no_hay">No hay videojuegos con esa configuracion</string>
     <string name="todo">Todo</string>
     <string name="busca_video">Busca videojuego...</string>
+    <string name="novideo">No hay videojuegos</string>
 </resources>

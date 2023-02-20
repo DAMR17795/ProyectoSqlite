@@ -61,7 +61,7 @@ class BaseDatosJuegos(contexto: Context):SQLiteOpenHelper(contexto,DATABASE,null
             val cursor = conexion.rawQuery(consulta, null)
             if(cursor.moveToFirst()){
                 do{
-                    val anime=Juegos(
+                    val juego=Juegos(
                         cursor.getInt(cursor.getColumnIndex("id")),
                         cursor.getString(cursor.getColumnIndex("consola")),
                         cursor.getBlob(cursor.getColumnIndex("imagen")),
@@ -70,7 +70,7 @@ class BaseDatosJuegos(contexto: Context):SQLiteOpenHelper(contexto,DATABASE,null
                         cursor.getFloat(cursor.getColumnIndex("estrellas")),
                         cursor.getString(cursor.getColumnIndex("jugado"))
                     )
-                    listaJuegos.add(anime)
+                    listaJuegos.add(juego)
                 }while(cursor.moveToNext())
             }
             cursor.close()

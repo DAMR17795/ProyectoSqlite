@@ -2,35 +2,24 @@ package www.iesmurgi.proyectosqlite.actividades
 
 import android.app.Activity
 import android.app.AlertDialog
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.BitmapFactory.Options
 import android.graphics.drawable.BitmapDrawable
-import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.content.FileProvider
 import www.iesmurgi.proyectosqlite.R
-import www.iesmurgi.proyectosqlite.adapter.JuegosAdapter
 import www.iesmurgi.proyectosqlite.bbdd.BaseDatosJuegos
 import www.iesmurgi.proyectosqlite.bbdd.Juegos
 import www.iesmurgi.proyectosqlite.databinding.CrearModificarBinding
 import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.IOException
-import java.text.SimpleDateFormat
-import java.util.*
 
 class Crear_Modificar:AppCompatActivity() {
     var titulo = ""
@@ -242,20 +231,20 @@ class Crear_Modificar:AppCompatActivity() {
             editar = true
             binding.btnCrear.text = resources.getString(R.string.editar) + "  ✏️"
             binding.textView.text = resources.getString(R.string.modificar)
-            val anime = datos.getSerializable("ANIMES") as Juegos
-            id = anime.id
-            binding.etTitulo.setText(anime.titulo)
-            binding.etDescripcion.setText(anime.descripcion)
+            val juego = datos.getSerializable("JUEGOS") as Juegos
+            id = juego.id
+            binding.etTitulo.setText(juego.titulo)
+            binding.etDescripcion.setText(juego.descripcion)
 
 
-            binding.autocompleteCategoria.setText(anime.consola)
+            binding.autocompleteCategoria.setText(juego.consola)
 
-            binding.autocompleteVisto.setText(anime.jugado)
+            binding.autocompleteVisto.setText(juego.jugado)
 
 
-            binding.etStar.rating = anime.estrellas
+            binding.etStar.rating = juego.estrellas
 
-            val byteArray = anime.imagen // tu array de bytes
+            val byteArray = juego.imagen // tu array de bytes
 
             val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
             binding.imageView.setImageBitmap(bitmap)
@@ -330,9 +319,9 @@ class Crear_Modificar:AppCompatActivity() {
                 binding.Visto.error = resources.getString(R.string.campo_vacio)
             } else  {
                 if (!editar) {
-                    val anime =
+                    val juego =
                         Juegos(1, categoria, byteArray, titulo, descripcion, estrellas, visto)
-                    if (conexion.create(anime) > -1) {
+                    if (conexion.create(juego) > -1) {
                         finish()
                     } else {
                         Toast.makeText(
@@ -344,9 +333,9 @@ class Crear_Modificar:AppCompatActivity() {
                     }
 
                 } else {
-                    val anime =
+                    val juego =
                         Juegos(1, categoria, byteArray, titulo, descripcion, estrellas, visto)
-                    if (conexion.update(anime) > -1) {
+                    if (conexion.update(juego) > -1) {
                         finish()
                     } else {
                         Toast.makeText(this, resources.getString(R.string.registro), Toast.LENGTH_SHORT)

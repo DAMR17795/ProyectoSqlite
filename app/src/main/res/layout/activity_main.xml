@@ -55,7 +55,7 @@
             android:layout_weight="1" />
 
         <Spinner
-            android:id="@+id/spCategoria"
+            android:id="@+id/spConsola"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1" />
@@ -110,7 +110,7 @@
         android:id="@+id/tvNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No hay animes o mangas"
+        android:text="@string/novideo"
         android:textColor="#F44336"
         android:textSize="26sp"
         android:textStyle="bold"
