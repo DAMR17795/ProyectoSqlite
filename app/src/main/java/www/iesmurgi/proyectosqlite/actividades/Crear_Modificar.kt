@@ -1,10 +1,12 @@
 package www.iesmurgi.proyectosqlite.actividades
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.BitmapFactory.Options
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
@@ -52,6 +54,9 @@ class Crear_Modificar:AppCompatActivity() {
         setContentView(binding.root)
         conexion = BaseDatosJuegos(this)
         var button= binding.button2
+        button.setOnClickListener{
+            abrirFoto()
+        }
 
 
         binding.imageView.setImageResource(R.drawable.nophoto)
@@ -61,39 +66,25 @@ class Crear_Modificar:AppCompatActivity() {
         cogerDatos()
         setListeners()
     }
-    @Throws(IOException::class)
-    private fun crearArchivoDeImagen(): File {
-        // Crea un nombre único para el archivo de imagen basado en la fecha y hora actual
-        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
-        val storageDir: File? = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        return File.createTempFile(
-            "JPEG_${timeStamp}_",
-            ".jpg",
-            storageDir
-        )
-    }
+    private fun abrirFoto() {
 
-
-    private fun iniciarCamara() {
-        val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        if (cameraIntent.resolveActivity(packageManager) != null) {
-            // Crea un archivo donde se guardará la foto tomada por la cámara
-            var photoFile: File? = null
-            try {
-                photoFile = crearArchivoDeImagen()
-            } catch (ex: IOException) {
-                Log.e(TAG, "Error al crear el archivo de imagen: " + ex.message)
-                Toast.makeText(this, "Error al crear el archivo de imagen", Toast.LENGTH_SHORT).show()
+     var options = listOf("Tomar foto", "Elegir de la galería")
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Elige una opción")
+        builder.setItems(options.toTypedArray()){ _, item ->
+            when {
+                options[item] == "Tomar foto" -> {
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    startActivityForResult(intent, PICK_IMAGE_REQUEST_CAMERA)
+                }
+                options[item] == "Elegir de la galería" -> {
+                    val intent = Intent(Intent.ACTION_PICK)
+                    intent.type = "image/*"
+                    startActivityForResult(intent, PICK_IMAGE_REQUEST_GALERIA)
+                }
             }
-            // Si el archivo de imagen fue creado exitosamente, continúa
-            if (photoFile != null) {
-                val photoURI: Uri = FileProvider.getUriForFile(this, "com.example.android.fileprovider", photoFile)
-                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                startActivityForResult(cameraIntent, CAMERA_REQUEST_CODE)
-            }
-        } else {
-            Toast.makeText(this, "No se encontró una aplicación de cámara disponible", Toast.LENGTH_SHORT).show()
         }
+        builder.show()
     }
 
 
@@ -356,7 +347,9 @@ class Crear_Modificar:AppCompatActivity() {
     companion object {
 
         const val REQUEST_CODE_GALLERY = 1
-        const val CAMERA_REQUEST_CODE = 1
+        const val CAMERA_REQUEST_CODE = 31
+        const val PICK_IMAGE_REQUEST_GALERIA=20
+        const val PICK_IMAGE_REQUEST_CAMERA=21
     }
 
     private fun openGallery() {
@@ -371,6 +364,9 @@ class Crear_Modificar:AppCompatActivity() {
             val imageUri = data?.data
             binding.imageView.setImageURI(imageUri)
 
+        } else if ( requestCode == PICK_IMAGE_REQUEST_CAMERA && resultCode == Activity.RESULT_OK) {
+            val imagen = data?.extras?.get("data") as Bitmap
+            binding.imageView.setImageBitmap(imagen)
         }
     }
 }
