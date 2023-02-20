@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         rvMain = findViewById(R.id.rvMain)
 
-
         conexion = BaseDatosJuegos(this)
         searchView = binding.searchview
         searchView.clearFocus()
