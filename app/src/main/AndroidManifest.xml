@@ -13,7 +13,8 @@
         android:theme="@style/Theme.ProyectoSqlite"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".actividades.Splash"
+            android:theme="@style/SplashTheme"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,6 +35,8 @@
                 android:value="" />
         </activity>
         <activity android:name=".actividades.ItemActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
             android:screenOrientation="portrait"/>
         <provider
             android:name="androidx.core.content.FileProvider"

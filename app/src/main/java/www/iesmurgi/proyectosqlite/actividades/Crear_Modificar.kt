@@ -66,16 +66,16 @@ class Crear_Modificar:AppCompatActivity() {
 
     private fun abrirFoto() {
 
-     var options = listOf("Tomar foto", "Elegir de la galería")
+     var options = listOf(resources.getString(R.string.foto), resources.getString(R.string.galeria))
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("Elige una opción")
+        builder.setTitle(resources.getString(R.string.elegir))
         builder.setItems(options.toTypedArray()){ _, item ->
             when {
-                options[item] == "Tomar foto" -> {
+                options[item] == resources.getString(R.string.foto) -> {
                     val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                     startActivityForResult(intent, PICK_IMAGE_REQUEST_CAMERA)
                 }
-                options[item] == "Elegir de la galería" -> {
+                options[item] == resources.getString(R.string.galeria) -> {
                     val intent = Intent(Intent.ACTION_PICK)
                     intent.type = "image/*"
                     startActivityForResult(intent, PICK_IMAGE_REQUEST_GALERIA)
@@ -153,7 +153,7 @@ class Crear_Modificar:AppCompatActivity() {
 
 
     fun autocomplete() {
-        var listaVisto = listOf<String>("Jugado", "No Jugado", "Jugándolo")
+        var listaVisto = listOf<String>(resources.getString(R.string.jugado), resources.getString(R.string.no_jugado), resources.getString(R.string.jugandolo))
         val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, listaVisto)
         binding.autocompleteVisto.setAdapter(adapter)
         binding.autocompleteVisto.setOnItemClickListener { parent, _, position, _ ->
@@ -219,7 +219,7 @@ class Crear_Modificar:AppCompatActivity() {
                     }
                 }
                 if (!found) {
-                    binding.Categoria.helperText = "Esa consola no existe"
+                    binding.Categoria.helperText = resources.getString(R.string.no_existe)
                     binding.Categoria.boxStrokeColor =
                         ContextCompat.getColor(applicationContext, R.color.rojo)
                 } else {
@@ -240,8 +240,8 @@ class Crear_Modificar:AppCompatActivity() {
         val datos = intent.extras
         if (datos != null) {
             editar = true
-            binding.btnCrear.text = "EDITAR  ✏️"
-            binding.textView.text = "MODIFICACION DE JUEGO: "
+            binding.btnCrear.text = resources.getString(R.string.editar) + "  ✏️"
+            binding.textView.text = resources.getString(R.string.modificar)
             val anime = datos.getSerializable("ANIMES") as Juegos
             id = anime.id
             binding.etTitulo.setText(anime.titulo)
@@ -291,7 +291,7 @@ class Crear_Modificar:AppCompatActivity() {
             val byteArray = stream.toByteArray()
 
             var listaCategoria = listOf<String>("XBOX/X", "PS5", "SWITCH")
-            var listaVisto = listOf<String>("Jugado", "No Jugado", "Jugándolo")
+            var listaVisto = listOf<String>(resources.getString(R.string.jugado), resources.getString(R.string.no_jugado), resources.getString(R.string.jugandolo))
 
             var txt = binding.autocompleteCategoria.text
             var foundCategoria = false
@@ -314,20 +314,20 @@ class Crear_Modificar:AppCompatActivity() {
 
             if (binding.etTitulo.text!!.isEmpty()) {
 
-                binding.Titulo.error = "El titulo no puede estar vacio"
+                binding.Titulo.error = resources.getString(R.string.titulo_vacio)
 
 
             } else if (binding.etDescripcion.text!!.isEmpty()) {
 
-                binding.Descripcion.error = "La descripcion no puede estar vacia"
+                binding.Descripcion.error = resources.getString(R.string.descripcion_vacia)
 
             } else if (binding.autocompleteVisto.text.isEmpty()) {
                     //categoria, byteArray, titulo, descripcion, estrellas, visto
 
-                binding.Visto.error = "Este campo no puede estar vacio"
+                binding.Visto.error = resources.getString(R.string.campo_vacio)
 
             } else if (binding.autocompleteCategoria.text.isEmpty()) {
-                binding.Visto.error = "Este campo no puede estar vacio."
+                binding.Visto.error = resources.getString(R.string.campo_vacio)
             } else  {
                 if (!editar) {
                     val anime =
@@ -337,7 +337,7 @@ class Crear_Modificar:AppCompatActivity() {
                     } else {
                         Toast.makeText(
                             this,
-                            "No se pudo guardar el registro!!!",
+                            resources.getString(R.string.registro),
                             Toast.LENGTH_SHORT
                         )
                             .show()
@@ -349,7 +349,7 @@ class Crear_Modificar:AppCompatActivity() {
                     if (conexion.update(anime) > -1) {
                         finish()
                     } else {
-                        Toast.makeText(this, "No se pudo editar el registro!!!", Toast.LENGTH_SHORT)
+                        Toast.makeText(this, resources.getString(R.string.registro), Toast.LENGTH_SHORT)
                             .show()
                     }
                 }
