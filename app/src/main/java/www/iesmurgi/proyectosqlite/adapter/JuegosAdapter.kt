@@ -31,10 +31,8 @@ class JuegosAdapter(
     override fun getItemCount() = lista.size  //1
 
     fun deleteItem(i: Int) {
-
         lista.removeAt(i)
         notifyItemRemoved(i)
-
     }
 
 

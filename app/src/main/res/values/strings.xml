@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ProyectoSqlite</string>
+    <string name="about">Aplicación Desarrollada Por:</string>
+    <string name="acerca">Acerca De</string>
 </resources>

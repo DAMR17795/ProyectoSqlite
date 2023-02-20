@@ -13,10 +13,8 @@ class ItemActivity:AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = DescripcionBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         cogerDatos()
     }
 
@@ -37,16 +35,31 @@ class ItemActivity:AppCompatActivity() {
             binding.etImg.setImageBitmap(bitmap)
 
             if (binding.etVisto.text.equals("Jugado")) {
-
-                binding.etVisto.setTextColor(ContextCompat.getColor(this, R.color.verde))
+                binding.etVisto.setTextColor(ContextCompat.getColor(this, R.color.black))
+                binding.etVisto.setText("Estado: Jugado ✔️")
             }
             if (binding.etVisto.text.equals("No Jugado")) {
-
-                binding.etVisto.setTextColor(ContextCompat.getColor(this, R.color.rojo))
+                binding.etVisto.setText("Estado: No Jugado ❌")
+                binding.etVisto.setTextColor(ContextCompat.getColor(this, R.color.black))
             }
             if (binding.etVisto.text.equals("Jugándolo")) {
 
-                binding.etVisto.setTextColor(ContextCompat.getColor(this, R.color.amarillo))
+                binding.etVisto.setTextColor(ContextCompat.getColor(this, R.color.black))
+                binding.etVisto.setText("Estado: Jugándolo \uD83C\uDFAE")
+            }
+
+            if (binding.etCategoria.text.equals("SWITCH")) {
+                binding.etCategoria.setText("Consola: SWITCH")
+                binding.etCategoria.setTextColor(ContextCompat.getColor(this, R.color.rojo))
+                binding.tvLogoDescripcion.setImageResource(R.drawable.logoswitch)
+            } else if (binding.etCategoria.text.equals("PS5")) {
+                binding.etCategoria.setTextColor(ContextCompat.getColor(this, R.color.azulTitulo))
+                binding.etCategoria.setText("Consola: PS5")
+                binding.tvLogoDescripcion.setImageResource(R.drawable.pslogo)
+            } else if (binding.etCategoria.text.equals("XBOX/X")) {
+                binding.etCategoria.setTextColor(ContextCompat.getColor(this, R.color.verde))
+                binding.etCategoria.setText("Consola: XBOX/X")
+                binding.tvLogoDescripcion.setImageResource(R.drawable.xboxlogo)
             }
 
 

@@ -56,12 +56,19 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.main_menu, menu)
         return true
     }
+    fun mostrarAbout() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(R.string.acerca).setIcon(R.drawable.acercadeicon).setMessage(getString(R.string.about) + "\n\nDaniel Alejandro Martín Romero - 2ºDAM")
+        //Mostramos el dialogo
+        val dialog = builder.create()
+        dialog.show()
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.crear -> abrirCrear()
             R.id.borrar -> borrar()
-            R.id.cerrar -> System.exit(0)
+            R.id.cerrar -> mostrarAbout()
             else -> return super.onOptionsItemSelected(item)
         }
         return true

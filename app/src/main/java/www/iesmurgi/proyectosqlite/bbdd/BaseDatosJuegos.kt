@@ -93,7 +93,7 @@ class BaseDatosJuegos(contexto: Context):SQLiteOpenHelper(contexto,DATABASE,null
             put("JUGADO", juego.jugado)
 
         }
-        val update = conexion.update(TABLA, valores, "titulo=? and categoria=?", arrayOf(juego.titulo, juego.consola))
+        val update = conexion.update(TABLA, valores, "titulo=? and consola=?", arrayOf(juego.titulo, juego.consola))
         conexion.close()
         return  update
     }

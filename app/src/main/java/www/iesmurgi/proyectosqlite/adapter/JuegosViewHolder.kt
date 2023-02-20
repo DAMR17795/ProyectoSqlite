@@ -12,7 +12,6 @@ import www.iesmurgi.proyectosqlite.databinding.ItemBinding
 
 
 class JuegosViewHolder(vista: View) : RecyclerView.ViewHolder(vista) {
-    //  private val miBinding=UsuariosLayoutBinding.bind(vista)
     private val miBinding = ItemBinding.bind(vista)
 
     fun inflar(

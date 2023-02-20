@@ -37,15 +37,12 @@ class Crear_Modificar:AppCompatActivity() {
     var descripcion = ""
     var categoria = ""
     var estrellas = 0.0f
-    var img = null
     var id: Int? = null
     var visto = ""
     var editar = false
 
     lateinit var binding: CrearModificarBinding
     lateinit var conexion: BaseDatosJuegos
-    lateinit var miAdapter: JuegosAdapter
-    var lista = mutableListOf<Juegos>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +58,12 @@ class Crear_Modificar:AppCompatActivity() {
         cogerDatos()
         setListeners()
     }
+
+    companion object {
+        const val PICK_IMAGE_REQUEST_GALERIA=20
+        const val PICK_IMAGE_REQUEST_CAMERA=21
+    }
+
     private fun abrirFoto() {
 
      var options = listOf("Tomar foto", "Elegir de la galería")
@@ -80,6 +83,22 @@ class Crear_Modificar:AppCompatActivity() {
             }
         }
         builder.show()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_IMAGE_REQUEST_GALERIA && resultCode == Activity.RESULT_OK) {
+            val imageUri = data?.data
+            binding.imageView.setImageURI(imageUri)
+            binding.imageView.setTag(imageUri)
+
+        } else if ( requestCode == PICK_IMAGE_REQUEST_CAMERA && resultCode == Activity.RESULT_OK) {
+            val imagen = data?.extras?.get("data") as Bitmap
+            binding.imageView.setImageBitmap(imagen)
+            binding.imageView.setTag(imagen)
+            binding.imageView.setScaleX(1.0F)
+            binding.imageView.setScaleY(1.0F)
+        }
     }
 
 
@@ -221,11 +240,13 @@ class Crear_Modificar:AppCompatActivity() {
         val datos = intent.extras
         if (datos != null) {
             editar = true
-            binding.btnCrear.text = "EDITAR"
+            binding.btnCrear.text = "EDITAR  ✏️"
+            binding.textView.text = "MODIFICACION DE JUEGO: "
             val anime = datos.getSerializable("ANIMES") as Juegos
             id = anime.id
             binding.etTitulo.setText(anime.titulo)
             binding.etDescripcion.setText(anime.descripcion)
+
 
             binding.autocompleteCategoria.setText(anime.consola)
 
@@ -238,6 +259,8 @@ class Crear_Modificar:AppCompatActivity() {
 
             val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
             binding.imageView.setImageBitmap(bitmap)
+            //Cuidado
+            binding.imageView.setTag(bitmap)
 
         }
     }
@@ -329,36 +352,12 @@ class Crear_Modificar:AppCompatActivity() {
                         Toast.makeText(this, "No se pudo editar el registro!!!", Toast.LENGTH_SHORT)
                             .show()
                     }
-
                 }
-
-
             }
 
         } else {
-            println("eror")
-        }
-
-
-    }
-
-    companion object {
-
-        const val REQUEST_CODE_GALLERY = 1
-        const val PICK_IMAGE_REQUEST_GALERIA=20
-        const val PICK_IMAGE_REQUEST_CAMERA=21
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE_GALLERY && resultCode == Activity.RESULT_OK) {
-            val imageUri = data?.data
-            binding.imageView.setImageURI(imageUri)
-
-        } else if ( requestCode == PICK_IMAGE_REQUEST_CAMERA && resultCode == Activity.RESULT_OK) {
-            val imagen = data?.extras?.get("data") as Bitmap
-            binding.imageView.setImageBitmap(imagen)
-            binding.imageView.setTag(imagen)
+            println("error")
         }
     }
+
 }
